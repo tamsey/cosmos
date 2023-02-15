@@ -4,6 +4,7 @@ DATABASE = "mongodb"
 COLLECTION = "mongo" 
 FIELD = "Day"
 
+##CREATE FUNCTION
 def insert_sample_document(collection):
     """Insert a sample document and return the contents of its _id field"""
     document_id = collection.insert_one(
