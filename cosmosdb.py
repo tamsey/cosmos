@@ -1,4 +1,13 @@
-CONNECTION_STRING = getpass.getpass( prompt="mongodb://mongoday3:jvhIsl8HBuvAgi2DHz0xYGT9CJHGZX2dpyckkl7sP8FwEkN6qbgj5zuPtNm7dnTc1OrKMLQ4Xu3hACDbuCWwwA==@mongoday3.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@mongoday3@ " )
+# libraries
+import getpass
+import pymongo
+from random import randint
+# Connection string to connect with CosmosDB MongoDB API
+CONNECTION_STRING = getpass.getpass(
+    prompt="Enter connection string available in networking tab of cosmos account: "
+)
+
+#print("Using " + CONNECTION_STRING + "to connect with MongoDB")
 
 DATABASE = "mongodb" 
 COLLECTION = "mongo" 
