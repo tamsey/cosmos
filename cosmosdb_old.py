@@ -1,25 +1,24 @@
 # libraries
-import json
 import getpass
+import json
 import pymongo
 from random import randint
-
 # Connection string to connect with CosmosDB MongoDB API
 CONNECTION_STRING = getpass.getpass(
     prompt="Enter connection string available in networking tab of cosmos account: "
 )
 
-#print("Using " + CONNECTION_STRING + "to connect with MongoDB")
+print("Using " + CONNECTION_STRING + " to connect with MongoDB")
 
-# Variables for Database & collection to create, update or delete the documents
-DATABASE = "mongo db"
-COLLECTION = "training"
-#FIELD = "Day"
+DATABASE = "mongodb" 
+COLLECTION = "mongo" 
+FIELD = "Day"
 
-# Opening JSON file
+##read json file
 file = open('client1.json')
 data = json.load(file)
 
+##CREATE FUNCTION
 def insert_sample_document(collection):
     """Insert a sample document and return the contents of its _id field"""
     document_id = collection.insert_one(data).inserted_id
@@ -31,14 +30,12 @@ def create_database_unsharded_collection(client):
     an unsharded collection
     """
     db = client[DATABASE]
-
     # Create database if it doesn't exist
     if DATABASE not in client.list_database_names():
         # Database with 400 RU throughput that can be shared across the
         # DB's collections
         db.command({"customAction": "CreateDatabase", "offerThroughput": 400})
         print("Created db {} with shared throughput".format(DATABASE))
-
     # Create collection if it doesn't exist
     if COLLECTION not in db.list_collection_names():
         # Creates a unsharded collection that uses the DBs shared throughput
@@ -49,8 +46,34 @@ def create_database_unsharded_collection(client):
             }
         )
         print("Created collection {}".format(COLLECTION))
-
     return db[COLLECTION]
+
+
+#def delete_document(collection, document_id):
+#    """Delete the document containing document_id from the collection"""
+#    collection.delete_one({"_id": document_id})
+#    print("Deleted document with _id {}".format(document_id))
+
+def read_document(collection, document_id):
+    """Return the contents of the document containing document_id"""
+    print(
+        "Found a document with _id {}: {}".format(
+            document_id, collection.find_one({"_id": document_id})
+        )
+    )
+
+
+def update_document(collection, document_id):
+    """Update the sample field value in the document containing document_id"""
+    collection.update_one(
+        {"_id": document_id}, {"$set": {SAMPLE_FIELD_NAME: "Updated!"}}
+    )
+    print(
+        "Updated document with _id {}: {}".format(
+            document_id, collection.find_one({"_id": document_id})
+        )
+    )
+
 
 def main():
     """Connect to the API for MongoDB, create DB and collection, perform
@@ -64,11 +87,16 @@ def main():
             "Invalid API for MongoDB connection string \
                 or timed out when attempting to connect"
         )
-
+        
     collection = create_database_unsharded_collection(client)
     document_id = insert_sample_document(collection)
     read_document(collection, document_id)
     update_document(collection, document_id)
 
+
 if __name__ == "__main__":
     main()
+
+
+
+
