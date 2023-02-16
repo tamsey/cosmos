@@ -7,7 +7,7 @@ CONNECTION_STRING = getpass.getpass(
     prompt="Enter connection string available in networking tab of cosmos account: "
 )
 
-#print("Using " + CONNECTION_STRING + "to connect with MongoDB")
+print("Using " + CONNECTION_STRING + " to connect with MongoDB")
 
 DATABASE = "mongodb" 
 COLLECTION = "mongo" 
