@@ -15,8 +15,8 @@ COLLECTION = "mongo"
 FIELD = "Day"
 
 ##read json file
-file = open("client1.json")
-data = json.load()
+file = open('client1.json')
+data = json.load(file)
 
 ##CREATE FUNCTION
 def insert_sample_document(collection):
