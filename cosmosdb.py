@@ -16,6 +16,7 @@ DATABASE = "mongo db"
 COLLECTION = "training"
 #FIELD = "Day"
 
+
 # Opening JSON file
 file = open('client1.json')
 data = json.load(file)
