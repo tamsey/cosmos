@@ -13,12 +13,18 @@ DATABASE = "mongodb"
 COLLECTION = "mongo" 
 FIELD = "Day"
 
+##read json file
+file = open("client1.json")
+data = json.load()
+
 ##CREATE FUNCTION
 def insert_sample_document(collection):
     """Insert a sample document and return the contents of its _id field"""
-    document_id = collection.insert_one(
-        {FIELD: randint(50, 500)}
-    ).inserted_id
+    document_id = collection.insert_one(data
+        # {FIELD: randint(50, 500),
+        
+        # }
+        ).inserted_id
     print("Inserted document with _id {}".format(document_id))
     return document_id
 
@@ -76,16 +82,16 @@ def main():
 #     )
 
 
-# def update_document(collection, document_id):
-#     """Update the sample field value in the document containing document_id"""
-#     collection.update_one(
-#         {"_id": document_id}, {"$set": {SAMPLE_FIELD_NAME: "Updated!"}}
-#     )
-#     print(
-#         "Updated document with _id {}: {}".format(
-#             document_id, collection.find_one({"_id": document_id})
-    #     )
-    # )
+def update_document(collection, document_id):
+    """Update the sample field value in the document containing document_id"""
+    collection.update_one(
+        {"_id": document_id}, {"$set": {SAMPLE_FIELD_NAME: "Updated!"}}
+    )
+    print(
+        "Updated document with _id {}: {}".format(
+            document_id, collection.find_one({"_id": document_id})
+        )
+    )
 
 
 if __name__ == "__main__":

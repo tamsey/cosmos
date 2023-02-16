@@ -1,0 +1,16 @@
+{
+    "firstName": "Rishabh",
+    "lastName": "Sharma",
+    "cibil":700,
+    
+    "contact_details": {
+        "Phone": 123,
+        "email": abc@123
+        },
+        
+     "address": {
+     "city": "Pune",
+     "State": "MH",
+     "country": "IND"
+     }
+ }
