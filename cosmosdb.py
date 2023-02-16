@@ -12,7 +12,7 @@ CONNECTION_STRING = getpass.getpass(
 #print("Using " + CONNECTION_STRING + "to connect with MongoDB")
 
 # Variables for Database & collection to create, update or delete the documents
-DATABASE = "mongo db"
+DATABASE = "mongodb"
 COLLECTION = "training"
 #FIELD = "Day"
 
