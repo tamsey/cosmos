@@ -20,11 +20,7 @@ data = json.load()
 ##CREATE FUNCTION
 def insert_sample_document(collection):
     """Insert a sample document and return the contents of its _id field"""
-    document_id = collection.insert_one(data
-        # {FIELD: randint(50, 500),
-        
-        # }
-        ).inserted_id
+    document_id = collection.insert_one(data).inserted_id
     print("Inserted document with _id {}".format(document_id))
     return document_id
 
