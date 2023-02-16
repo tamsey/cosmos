@@ -28,7 +28,7 @@ def create_database_unsharded_collection(client):
     """
     db = client[DATABASE]
     # Create database if it doesn't exist
-    if DB_NAME not in client.list_database_names():
+    if DATABASE not in client.list_database_names():
         # Database with 400 RU throughput that can be shared across the
         # DB's collections
         db.command({"customAction": "CreateDatabase", "offerThroughput": 400})
