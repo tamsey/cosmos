@@ -52,22 +52,6 @@ def create_database_unsharded_collection(client):
     return db[COLLECTION]
 
 
-def main():
-    """Connect to the API for MongoDB, create DB and collection, perform
-    CRUD operations
-    """
-    client = pymongo.MongoClient(CONNECTION_STRING)
-    try:
-        client.server_info()  # validate connection string
-    except pymongo.errors.ServerSelectionTimeoutError:
-        raise TimeoutError(
-            "Invalid API for MongoDB connection string \
-                or timed out when attempting to connect"
-        )
-    collection = create_database_unsharded_collection(client)
-    document_id = insert_sample_document(collection)
-
-
 #def delete_document(collection, document_id):
 #    """Delete the document containing document_id from the collection"""
 #    collection.delete_one({"_id": document_id})
@@ -92,6 +76,25 @@ def update_document(collection, document_id):
             document_id, collection.find_one({"_id": document_id})
         )
     )
+
+
+def main():
+    """Connect to the API for MongoDB, create DB and collection, perform
+    CRUD operations
+    """
+    client = pymongo.MongoClient(CONNECTION_STRING)
+    try:
+        client.server_info()  # validate connection string
+    except pymongo.errors.ServerSelectionTimeoutError:
+        raise TimeoutError(
+            "Invalid API for MongoDB connection string \
+                or timed out when attempting to connect"
+        )
+        
+    collection = create_database_unsharded_collection(client)
+    document_id = insert_sample_document(collection)
+    read_document(collection, document_id)
+    update_document(collection, document_id)
 
 
 if __name__ == "__main__":
