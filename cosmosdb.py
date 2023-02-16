@@ -1,5 +1,6 @@
 # libraries
 import getpass
+import json
 import pymongo
 from random import randint
 # Connection string to connect with CosmosDB MongoDB API
