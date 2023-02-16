@@ -65,7 +65,7 @@ def main():
                 or timed out when attempting to connect"
         )
     collection = create_database_unsharded_collection(client)
-    #document_id = insert_sample_document(collection)
+    document_id = insert_sample_document(collection)
 
 
 #def delete_document(collection, document_id):
@@ -73,13 +73,13 @@ def main():
 #    collection.delete_one({"_id": document_id})
 #    print("Deleted document with _id {}".format(document_id))
 
-# def read_document(collection, document_id):
-#     """Return the contents of the document containing document_id"""
-#     print(
-#         "Found a document with _id {}: {}".format(
-#             document_id, collection.find_one({"_id": document_id})
-#         )
-#     )
+def read_document(collection, document_id):
+    """Return the contents of the document containing document_id"""
+    print(
+        "Found a document with _id {}: {}".format(
+            document_id, collection.find_one({"_id": document_id})
+        )
+    )
 
 
 def update_document(collection, document_id):
