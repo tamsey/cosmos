@@ -57,25 +57,25 @@ def create_database_unsharded_collection(client):
 #    collection.delete_one({"_id": document_id})
 #    print("Deleted document with _id {}".format(document_id))
 
-# def read_document(collection, document_id):
-#     """Return the contents of the document containing document_id"""
-#     print(
-#         "Found a document with _id {}: {}".format(
-#             document_id, collection.find_one({"_id": document_id})
-#         )
-#     )
+def read_document(collection, document_id):
+    """Return the contents of the document containing document_id"""
+    print(
+        "Found a document with _id {}: {}".format(
+            document_id, collection.find_one({"_id": document_id})
+        )
+    )
 
 
-# def update_document(collection, document_id):
-#     """Update the sample field value in the document containing document_id"""
-#     collection.update_one(
-#         {"_id": document_id}, {"$set": {SAMPLE_FIELD_NAME: "Updated!"}}
-#     )
-#     print(
-#         "Updated document with _id {}: {}".format(
-#             document_id, collection.find_one({"_id": document_id})
-#         )
-#     )
+def update_document(collection, document_id):
+    """Update the sample field value in the document containing document_id"""
+    collection.update_one(
+        {"_id": document_id}, {"$set": {SAMPLE_FIELD_NAME: "Updated!"}}
+    )
+    print(
+        "Updated document with _id {}: {}".format(
+            document_id, collection.find_one({"_id": document_id})
+        )
+    )
 
 
 def main():
