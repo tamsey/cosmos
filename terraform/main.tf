@@ -18,7 +18,7 @@ resource "azurerm_resource_group" "new_resource" {
 resource "azurerm_cosmosdb_account" "GlobalDocumentDB" {
   name                      = var.name
   location                  = var.location
-  resource_group_name       = azurerm_resource_group.name
+  resource_group_name       = azurerm_resource_group.new_resource.name
   offer_type                = "Standard"
   kind                      = "GlobalDocumentDB"
   enable_automatic_failover = false
