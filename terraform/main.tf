@@ -1,9 +1,13 @@
-provider "azurerm"  {
-    features ()
+provider "azurerm" {
+    features {}
+}
+resource "azurerm_resource_group" "newresource" {
+  location = "eastus"
+  name = "tamanna"
+  tags = {
+    Name = "Day"
+    Day = "5"
+  }
 }
 
 
-resource "azurermresource_group" "new_resourcegrp" {
-location = "eastus"
-name = "terraform"
-}
