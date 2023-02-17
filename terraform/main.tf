@@ -7,7 +7,7 @@ variable "location" {
 variable "name" {
   default = "new_resource"
 }
-resource "azurerm_resource_group" "thinknyx" {
+resource "azurerm_resource_group" "new_resource" {
   location = var.location
   name = var.name
   tags = {
