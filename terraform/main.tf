@@ -12,7 +12,7 @@ resource "azurerm_resource_group" "thinknyx" {
   name = var.name
   tags = {
     Name = "Training"
-    Day = "5"
+    Day = "6"
   }
 }
 resource "azurerm_cosmosdb_account" "GlobalDocumentDB" {
