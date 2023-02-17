@@ -5,9 +5,9 @@ variable "location" {
   default = "eastus"
 }
 variable "name" {
-  default = "new_resource"
+  default = "new-resource1"
 }
-resource "azurerm_resource_group" "new_resource" {
+resource "azurerm_resource_group" "new-resource1" {
   location = var.location
   name = var.name
   tags = {
@@ -18,7 +18,7 @@ resource "azurerm_resource_group" "new_resource" {
 resource "azurerm_cosmosdb_account" "GlobalDocumentDB" {
   name                      = var.name
   location                  = var.location
-  resource_group_name       = azurerm_resource_group.new_resource.name
+  resource_group_name       = azurerm_resource_group.new-resource1.name
   offer_type                = "Standard"
   kind                      = "GlobalDocumentDB"
   enable_automatic_failover = false
